@@ -15,7 +15,9 @@
     "fixtures:make": "node qa/make-fixtures.mjs && tsx scripts/generate-content.ts fixtures",
     "dev:fixtures": "tsx scripts/generate-content.ts fixtures && PUBLIC_DIR=fixtures/public vite",
     "build:fixtures": "tsx scripts/generate-content.ts fixtures && PUBLIC_DIR=fixtures/public VITE_BASE_PATH=/yousa-song-archive/ vite build --outDir dist-fixtures",
-    "preview:fixtures": "PUBLIC_DIR=fixtures/public VITE_BASE_PATH=/yousa-song-archive/ vite preview --outDir dist-fixtures --port 4174 --strictPort"
+    "preview:fixtures": "PUBLIC_DIR=fixtures/public VITE_BASE_PATH=/yousa-song-archive/ vite preview --outDir dist-fixtures --port 4174 --strictPort",
+    "admin": "tsx scripts/admin-server.ts",
+    "test:admin": "node --import tsx --test tests/admin-content.test.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.2",

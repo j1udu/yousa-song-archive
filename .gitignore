@@ -12,3 +12,5 @@ qa/node_modules/
 qa/screenshots/
 fixtures/public/content/
 .claude/
+.admin-stage-*
+public/content/.tags-admin.tmp

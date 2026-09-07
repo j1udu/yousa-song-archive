@@ -47,3 +47,16 @@ npm run preview:fixtures # 预览夹具站：http://localhost:4174/yousa-song-ar
 ## GitHub Pages
 
 GitHub Actions 会在构建前自动扫描内容并生成索引，再从 `GITHUB_REPOSITORY` 推导项目站点子路径。自定义域名部署时，请将构建环境的 `VITE_BASE_PATH` 设置为 `/`。详情页使用 hash 路由，刷新不会触发 404。
+
+## 本地曲库管理工具
+
+管理工具只监听 `127.0.0.1`，不会被构建到公开站点，也不会自动提交或推送 Git。它会在临时副本中校验后才替换作品目录，并使用版本指纹避免旧页面覆盖外部修改。
+
+```bash
+npm run admin
+# 浏览器打开终端显示的本地地址，通常是 http://127.0.0.1:4317
+```
+
+在管理页面中可以新建或编辑作品、版本、人员、标签选择、链接、歌词和封面。标签分组和标签定义仍手工维护 `public/content/tags.json`。保存后请点击“校验曲库”，再查看 `git diff`，确认无误后手动提交并推送。管理工具不会直接修改 `works-index.json`；公开站点构建时会重新生成它。
+
+封面通过文件选择器复制到作品目录，支持 PNG/JPEG/WebP，单文件不超过 8 MB；歌词复制为 `lyrics.txt`，须为 UTF-8 且不超过 2 MB。
