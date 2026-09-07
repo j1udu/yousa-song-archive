@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.DS_Store
+*.local
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+public/content/works-index.json
+dist-fixtures/
+fixtures/public/content/works-index.json
+qa/node_modules/
+qa/screenshots/
+fixtures/public/content/
+.claude/

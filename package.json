@@ -1,0 +1,26 @@
+{
+  "name": "yousa-song-archive",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "predev": "tsx scripts/generate-content.ts",
+    "prebuild": "tsx scripts/generate-content.ts",
+    "generate-content": "tsx scripts/generate-content.ts",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "validate:content": "tsx scripts/validate-content.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "fixtures:make": "node qa/make-fixtures.mjs && tsx scripts/generate-content.ts fixtures",
+    "dev:fixtures": "tsx scripts/generate-content.ts fixtures && PUBLIC_DIR=fixtures/public vite",
+    "build:fixtures": "tsx scripts/generate-content.ts fixtures && PUBLIC_DIR=fixtures/public VITE_BASE_PATH=/yousa-song-archive/ vite build --outDir dist-fixtures",
+    "preview:fixtures": "PUBLIC_DIR=fixtures/public VITE_BASE_PATH=/yousa-song-archive/ vite preview --outDir dist-fixtures --port 4174 --strictPort"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.7"
+  }
+}

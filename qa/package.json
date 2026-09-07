@@ -1,0 +1,12 @@
+{
+  "name": "yousa-song-archive-qa",
+  "private": true,
+  "type": "module",
+  "description": "浏览器验证脚本：驱动本机 Google Chrome 检查曲库页面并留存截图。与站点本身的依赖隔离。",
+  "scripts": {
+    "check": "node browser-check.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.47.0"
+  }
+}
