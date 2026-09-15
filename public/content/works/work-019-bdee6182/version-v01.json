@@ -4,7 +4,26 @@
   "name": "STILL",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "渡邊カズヒロ"
+    ],
+    "作曲": [
+      "磯江俊道"
+    ],
+    "编曲": [
+      "磯江俊道"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=33682917",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

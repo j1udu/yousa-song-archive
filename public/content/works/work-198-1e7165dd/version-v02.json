@@ -4,7 +4,29 @@
   "name": "海座头(instrumental)",
   "type": "伴奏版",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "剪一湖秋蓝",
+      "剪一湖秋藍"
+    ],
+    "作曲": [
+      "李伟龙"
+    ],
+    "编曲": [
+      "李伟龙",
+      "天钦"
+    ],
+    "网易云艺人": [
+      "西瓜Kune",
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=437752914",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

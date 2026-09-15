@@ -4,7 +4,26 @@
   "name": "航向你的海岛",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "泠鸢yousa"
+    ],
+    "作曲": [
+      "Soda纯白"
+    ],
+    "编曲": [
+      "Soda纯白"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1804552401",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

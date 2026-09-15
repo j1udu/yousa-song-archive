@@ -4,7 +4,26 @@
   "name": "回老家宜宾去 伴奏",
   "type": "伴奏版",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "泠鸢yousa"
+    ],
+    "作曲": [
+      "泠鸢yousa"
+    ],
+    "编曲": [
+      "泠鸢yousa"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=3350498903",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

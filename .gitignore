@@ -14,3 +14,4 @@ fixtures/public/content/
 .claude/
 .admin-stage-*
 public/content/.tags-admin.tmp
+.netease-credits-cache/

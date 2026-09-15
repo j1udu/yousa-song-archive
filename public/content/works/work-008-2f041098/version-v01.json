@@ -4,7 +4,23 @@
   "name": "Fall In Love",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "永塚健登"
+    ],
+    "作曲": [
+      "永塚健登"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1300738492",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

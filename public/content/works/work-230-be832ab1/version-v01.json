@@ -4,7 +4,18 @@
   "name": "花头台",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "网易云艺人": [
+      "东京塔子",
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=465043450",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

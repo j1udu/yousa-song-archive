@@ -4,7 +4,17 @@
   "name": "想和你迎着台风去看海",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1989523956",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

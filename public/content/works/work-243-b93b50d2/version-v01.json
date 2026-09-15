@@ -4,7 +4,24 @@
   "name": "让风告诉你",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "ChiliChill乐团"
+    ],
+    "作曲": [
+      "ChiliChill乐团"
+    ],
+    "网易云艺人": [
+      "Hanser",
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1831504253",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

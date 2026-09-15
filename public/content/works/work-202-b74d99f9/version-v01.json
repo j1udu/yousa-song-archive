@@ -4,7 +4,23 @@
   "name": "灵魂潮汐 (有和声） 伴奏版",
   "type": "伴奏版",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "泠鸢yousa"
+    ],
+    "作曲": [
+      "闹闹丶"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1873189401",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

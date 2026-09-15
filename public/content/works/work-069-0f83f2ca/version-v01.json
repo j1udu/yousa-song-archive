@@ -4,7 +4,23 @@
   "name": "前前前世",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "野田洋次郎"
+    ],
+    "作曲": [
+      "野田洋次郎"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=446247397",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

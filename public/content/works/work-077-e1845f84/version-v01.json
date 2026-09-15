@@ -4,7 +4,27 @@
   "name": "告辞",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "冥凰",
+      "泠鸢yousa"
+    ],
+    "作曲": [
+      "Mzf小慕"
+    ],
+    "编曲": [
+      "Mzf小慕"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1321382292",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

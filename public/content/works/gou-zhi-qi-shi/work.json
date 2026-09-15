@@ -7,8 +7,12 @@
   "tags": [],
   "people": {},
   "cover": null,
-  "lyrics": null,
+  "lyrics": "lyrics.txt",
   "summary": "泠鸢yousa 的翻唱版本，收录于《【泠鸢翻唱2019】》。",
-  "versionOrder": ["cover-2019"],
-  "featuredVersions": ["cover-2019"]
+  "versionOrder": [
+    "cover-2019"
+  ],
+  "featuredVersions": [
+    "cover-2019"
+  ]
 }

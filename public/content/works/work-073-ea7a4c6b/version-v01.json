@@ -4,7 +4,29 @@
   "name": "吉祥话",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "St_色太"
+    ],
+    "作曲": [
+      "Dr.e"
+    ],
+    "编曲": [
+      "Dr.e"
+    ],
+    "网易云艺人": [
+      "Hanser",
+      "泠鸢yousa",
+      "祖娅纳惜",
+      "鹿乃"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1824454151",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

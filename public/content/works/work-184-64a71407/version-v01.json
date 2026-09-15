@@ -4,7 +4,23 @@
   "name": "梦想芭菲☆",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "joru"
+    ],
+    "作曲": [
+      "sizuku"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=476204571",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

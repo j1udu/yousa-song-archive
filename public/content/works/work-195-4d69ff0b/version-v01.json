@@ -4,7 +4,28 @@
   "name": "流光乐夜",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "MES"
+    ],
+    "作曲": [
+      "ゴールデン銀閣寺"
+    ],
+    "网易云艺人": [
+      "H.",
+      "三无Marblue",
+      "冥月",
+      "岚AYA",
+      "泠鸢yousa",
+      "Mes"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1831476089",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

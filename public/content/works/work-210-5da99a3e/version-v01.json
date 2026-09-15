@@ -4,7 +4,23 @@
   "name": "男孩们的旅行",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "泠鸢yousa"
+    ],
+    "作曲": [
+      "西门振"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=449605157",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

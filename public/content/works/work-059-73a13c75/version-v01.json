@@ -4,7 +4,32 @@
   "name": "僵尸制造者",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "ATOLS"
+    ],
+    "作曲": [
+      "ATOLS"
+    ],
+    "原唱": [
+      "初音ミク"
+    ],
+    "翻唱": [
+      "泠鸢yousa"
+    ],
+    "演唱": [
+      "泠鸢yousa"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1401499578",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

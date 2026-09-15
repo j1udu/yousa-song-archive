@@ -4,7 +4,23 @@
   "name": "赴约四季(无和声伴奏)",
   "type": "伴奏版",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作曲": [
+      "纯白"
+    ],
+    "作词": [
+      "泠鸢yousa"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=2074131893",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

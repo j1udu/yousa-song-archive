@@ -4,7 +4,31 @@
   "name": "白夜协奏曲",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "大九_LN"
+    ],
+    "作曲": [
+      "杨子艺Zoey",
+      "Zoey"
+    ],
+    "演唱": [
+      "泠鸢yousa"
+    ],
+    "编曲": [
+      "Zoey",
+      "弹跳的大球"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=1444474383",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }

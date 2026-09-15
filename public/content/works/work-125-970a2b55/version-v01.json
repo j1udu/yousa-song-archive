@@ -4,7 +4,24 @@
   "name": "彼岸花枯萎之时",
   "type": "待补充",
   "date": null,
-  "people": {},
-  "links": [],
+  "people": {
+    "作词": [
+      "オカメP"
+    ],
+    "作曲": [
+      "オカメP"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa",
+      "呆萌忆"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=430053899",
+      "label": "网易云条目"
+    }
+  ],
   "notes": ""
 }
