@@ -61,3 +61,24 @@ test("非法资源不会创建作品目录", () => {
     assert.equal(existsSync(join(contentPaths(root).works, "test-work")), false);
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
+
+test("授权音频会复制到作品目录并保留多种音质", () => {
+  const root = fixture();
+  const uploadDir = mkdtempSync(join(tmpdir(), "yousa-audio-upload-"));
+  try {
+    const mp3 = join(uploadDir, "source.mp3"); const flac = join(uploadDir, "source.flac");
+    writeFileSync(mp3, Buffer.from("ID3-test")); writeFileSync(flac, Buffer.from("fLaC-test"));
+    const input = payload(); input.versions[0] = { ...input.versions[0], audio: [{ quality: "MP3 320k", file: "source.mp3", format: "mp3" }, { quality: "FLAC 无损", file: "source.flac", format: "flac" }], audioRights: "authorized" };
+    const result = saveEditorWork(root, { ...input, audioUploads: { "official:MP3 320k": { name: "source.mp3", tempPath: mp3 }, "official:FLAC 无损": { name: "source.flac", tempPath: flac } } });
+    assert.deepEqual(result.versions[0].audio?.map((item) => item.format), ["mp3", "flac"]);
+    assert.equal(existsSync(join(contentPaths(root).works, "test-work", result.versions[0].audio?.[0].file ?? "")), true);
+  } finally { rmSync(root, { recursive: true, force: true }); rmSync(uploadDir, { recursive: true, force: true }); }
+});
+
+test("未确认音频分发权时阻止保存", () => {
+  const root = fixture();
+  try {
+    const input = payload(); input.versions[0] = { ...input.versions[0], audio: [{ quality: "MP3", file: "source.mp3", format: "mp3" }], audioRights: null };
+    assert.throws(() => saveEditorWork(root, input), (error) => error instanceof AdminError && /分发权/.test(error.message));
+  } finally { rmSync(root, { recursive: true, force: true }); }
+});

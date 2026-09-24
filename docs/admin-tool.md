@@ -23,8 +23,9 @@
 | GET | `/api/tags` | 读取标签目录和指纹 |
 | PUT | `/api/tags` | 校验后更新标签目录 |
 | POST | `/api/validate` | 在临时副本生成索引并校验内容 |
+| POST | `/api/audio-upload?workId={id}&versionId={id}` | 上传单个 MP3/FLAC 到本机会话临时区，返回 `uploadId` |
 
-所有写请求使用 JSON。上传资源使用 `{ name, contentBase64 }`，服务器会把封面规范化为 `cover.<扩展名>`，歌词规范化为 `lyrics.txt`。
+所有作品保存请求使用 JSON。封面和歌词使用 `{ name, contentBase64 }`；音频使用 `POST /api/audio-upload?workId={id}&versionId={id}` 直接上传 MP3/FLAC 二进制，保存时提交临时上传凭据。音频单文件不超过 100 MB。
 
 ## 保存策略
 
