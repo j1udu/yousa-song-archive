@@ -1,6 +1,6 @@
 import type { IndexedWork, Tag, TagCatalog, TagGroup, VersionSummary } from "../content/types";
 
-export const PAGE_SIZE = 12;
+export const PAGE_SIZE = 24;
 export const MAX_FEATURED = 3;
 
 export type SortKey = "year-desc" | "year-asc" | "title-asc" | "title-desc";
@@ -231,10 +231,6 @@ export function cardVersions(work: IndexedWork): { shown: VersionSummary[]; all:
   const featured = work.featuredVersions.map((id) => byId.get(id)).filter((version): version is VersionSummary => Boolean(version));
   const shown = (featured.length ? featured : all).slice(0, MAX_FEATURED);
   return { shown, all };
-}
-
-export function displayYear(year: number | null): string {
-  return year === null ? "年份未知" : String(year);
 }
 
 function unique<T>(values: T[]): T[] {

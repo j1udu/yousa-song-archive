@@ -6,8 +6,8 @@
 
 | 文件 | 用途 |
 | --- | --- |
-| `make-fixtures.mjs` | 生成独立测试夹具到 `fixtures/public/content`（30 个作品、3 组标签、损坏封面、宽/竖封面、人员继承、无链接版本、零版本作品等） |
-| `browser-check.mjs` | 端到端检查：搜索、输入法合成、组合筛选、排序、分页、URL 恢复、详情契约、错误状态与重试、键盘焦点、减少动态效果、手机/平板/桌面布局；截图保存到 `screenshots/` |
+| `make-fixtures.mjs` | 生成独立测试夹具到 `fixtures/public/content`（30 个作品、3 组标签、损坏封面、宽/竖封面、人员继承、授权下载、无链接版本、零版本作品等） |
+| `browser-check.mjs` | 端到端检查：搜索、输入法合成、组合筛选、排序、分页、URL 恢复、详情与授权下载契约、错误状态与重试、键盘焦点、减少动态效果、手机/平板/桌面布局；截图保存到 `screenshots/` |
 | `viewport-shot.mjs` | 按指定视口截取首屏截图（调试用） |
 | `diag-overflow.mjs` | 列出 390px 视口下超出窗口的元素（调试用） |
 | `screenshots/` | 最近一次运行留存的截图与 `*-report.md` 报告 |

@@ -134,10 +134,10 @@ describe("sorting", () => {
 });
 
 describe("pagination", () => {
-  it("clamps out-of-range pages and uses 12 per page", () => {
-    const items = Array.from({ length: 30 }, (_, index) => index + 1);
-    assert.deepEqual(paginate(items, 1).items.length, 12);
-    assert.deepEqual(paginate(items, 3).items, [25, 26, 27, 28, 29, 30]);
+  it("clamps out-of-range pages and uses 24 per page", () => {
+    const items = Array.from({ length: 60 }, (_, index) => index + 1);
+    assert.deepEqual(paginate(items, 1).items.length, 24);
+    assert.deepEqual(paginate(items, 3).items, [49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60]);
     assert.equal(paginate(items, 99).page, 3);
     assert.equal(paginate(items, 0).page, 1);
     assert.equal(paginate([], 5).pages, 1);

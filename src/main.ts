@@ -4,7 +4,7 @@ import { mountCatalog, type CatalogView } from "./catalog/view";
 import { focusHeading, mountWork } from "./work/view";
 import { currentRoute, currentSearch, homeHref, installLinkInterceptor, listen, savedScroll, scrollToInstant, trackScrollPosition, type RouteChange } from "./router";
 import { html, setHtml } from "./ui/html";
-import { coverPlaceholder, loadingBlock, siteFooter, siteHeader, SITE_NAME, statusBlock } from "./ui/common";
+import { glyphMarkup, loadingBlock, siteFooter, siteHeader, SITE_NAME, statusBlock } from "./ui/common";
 
 const root = document.querySelector<HTMLElement>("#app");
 if (!root) throw new Error("找不到应用容器 #app");
@@ -35,7 +35,7 @@ async function route(change: RouteChange): Promise<void> {
       return;
     }
     document.title = SITE_NAME;
-    setHtml(app, html`${siteHeader({ heading: true })}<main class="page catalog">${loadingBlock("正在加载曲库…")}</main>${siteFooter()}`);
+    setHtml(app, html`${siteHeader()}<main class="page catalog">${loadingBlock("正在加载曲库…")}</main>${siteFooter()}`);
     try {
       const data = await loadCatalog();
       if (!alive()) return;
@@ -49,7 +49,7 @@ async function route(change: RouteChange): Promise<void> {
       if (!alive()) return;
       setHtml(
         app,
-        html`${siteHeader({ heading: true })}<main class="page catalog">${statusBlock({ title: "曲库暂时无法加载", message: errorMessage(error), retry: true, kind: "error" })}</main>${siteFooter()}`,
+        html`${siteHeader()}<main class="page catalog">${statusBlock({ title: "曲库暂时无法加载", message: errorMessage(error), retry: true, kind: "error" })}</main>${siteFooter()}`,
       );
       app.querySelector<HTMLButtonElement>("[data-action='retry']")?.addEventListener("click", () => void route({ fromHistory: false }));
       focusHeading(app);
@@ -70,7 +70,7 @@ async function route(change: RouteChange): Promise<void> {
   document.title = `页面不存在 · ${SITE_NAME}`;
   setHtml(
     app,
-    html`${siteHeader({ heading: false })}<main class="page">${statusBlock({ title: "页面不存在", message: `没有与“${current.hash}”对应的页面。`, homeLink: homeHref(currentSearch()), level: 1 })}</main>${siteFooter()}`,
+    html`${siteHeader()}<main class="page">${statusBlock({ title: "页面不存在", message: `没有与“${current.hash}”对应的页面。`, homeLink: homeHref(currentSearch()), level: 1 })}</main>${siteFooter()}`,
   );
   scrollToInstant(0);
   focusHeading(app);
@@ -83,16 +83,17 @@ function leaveCatalog(): void {
   catalogView = null;
 }
 
-/** 封面加载失败时换成统一文字占位；error 事件不冒泡，因此在捕获阶段监听。 */
+/** 封面加载失败时换成字符封面；error 事件不冒泡，因此在捕获阶段监听。 */
 function installCoverFallback(scope: HTMLElement): void {
   scope.addEventListener(
     "error",
     (event) => {
       const target = event.target;
       if (!(target instanceof HTMLImageElement) || !target.hasAttribute("data-cover")) return;
-      const holder = target.closest(".cover");
+      const holder = target.closest<HTMLElement>(".cover");
       if (!holder) return;
-      setHtml(holder, coverPlaceholder());
+      const identity = { id: holder.dataset.coverId ?? "", title: holder.dataset.coverTitle ?? "" };
+      setHtml(holder, glyphMarkup(identity, { large: holder.hasAttribute("data-cover-large") }));
     },
     true,
   );

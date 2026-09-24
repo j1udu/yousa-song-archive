@@ -155,11 +155,13 @@ function writeWork(work, versions, extras = {}) {
       people: version.people ?? {},
       links: version.links ?? [],
       notes: version.notes ?? "",
+      ...(version.audio ? { audio: version.audio, audioRights: version.audioRights ?? null } : {}),
     };
     writeFileSync(join(dir, `version-${version.id}.json`), `${JSON.stringify(record, null, 2)}\n`);
   }
   if (extras.cover) writeFileSync(join(dir, extras.cover.name), extras.cover.data);
   if (extras.lyrics !== undefined) writeFileSync(join(dir, "lyrics.txt"), extras.lyrics);
+  for (const file of extras.files ?? []) writeFileSync(join(dir, file.name), file.data);
 }
 
 const link = (platform, label, slug) => ({ platform, url: `https://example.com/fixture/${slug}`, label });
@@ -199,13 +201,32 @@ writeWork(
     featuredVersions: [],
   },
   [
-    { id: "v-studio", name: "录音室正式版", type: "正式版", date: "2024-03-01", links: [link("示例平台A", "正式音源", "01-studio-a"), link("示例平台B", "官方公告", "01-studio-b")], notes: "第一行备注\n第二行备注" },
+    {
+      id: "v-studio",
+      name: "录音室正式版",
+      type: "正式版",
+      date: "2024-03-01",
+      links: [link("示例平台A", "正式音源", "01-studio-a"), link("示例平台B", "官方公告", "01-studio-b")],
+      notes: "第一行备注\n第二行备注",
+      audio: [
+        { quality: "FLAC 无损", url: "https://example.invalid/audio/audio-v-studio.flac", format: "flac", size: 1024 },
+        { quality: "MP3 320k", file: "audio-v-studio.mp3", format: "mp3" },
+      ],
+      audioRights: "authorized",
+    },
     { id: "v-live", name: "测试演唱会现场版", type: "现场", date: "2024", links: [link("示例平台A", "现场视频", "01-live")] },
     { id: "v-remix", name: "无链接改编版", type: "改编", date: null, links: [], notes: "这个版本没有任何链接，链接区域应完全隐藏。" },
     { id: "v-acoustic", name: "不插电版（人员替换）", type: "改编", date: "2025-01-15", people: { 演唱: ["测试演唱者甲", "测试演唱者庚"], 编曲: ["测试编曲者辛"] }, links: [link("示例平台C", "音频", "01-acoustic")] },
     { id: "v-collab", name: "合作版", type: "合作", date: "2025-06-30", people: { 演唱: ["测试演唱者甲", "测试演唱者壬"] }, links: [link("示例平台A", "合作视频", "01-collab")] },
   ],
-  { cover: { name: "cover.png", data: artwork(400, 400, 196) }, lyrics: LONG_LYRICS },
+  {
+    cover: { name: "cover.png", data: artwork(400, 400, 196) },
+    lyrics: LONG_LYRICS,
+    files: [
+      { name: "audio-v-studio.flac", data: Buffer.from("fixture flac download") },
+      { name: "audio-v-studio.mp3", data: Buffer.from("fixture mp3 download") },
+    ],
+  },
 );
 
 /* 02：featuredVersions 指定 2 个（非首位、逆序），共 4 个版本 */
