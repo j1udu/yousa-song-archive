@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "work-043-72dc621c",
-  "title": "人设404 洛天依ver",
+  "title": "人设404",
   "aliases": [],
   "year": null,
   "tags": [],
@@ -10,9 +10,15 @@
   "lyrics": "lyrics.txt",
   "summary": "",
   "versionOrder": [
-    "v01"
+    "v01",
+    "v02",
+    "v03",
+    "v04",
+    "v05"
   ],
   "featuredVersions": [
-    "v01"
+    "v01",
+    "v02",
+    "v03"
   ]
 }

@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
-import type { IndexedWork, RoleMap, TagCatalog, Version, VersionSummary, Work, WorkIndex } from "../src/content/types";
+import type { AudioAsset, IndexedWork, RoleMap, TagCatalog, Version, VersionSummary, Work, WorkIndex } from "../src/content/types";
 
 const ID_PATTERN = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DATE_PATTERN = /^(?:\d{4}|\d{4}-\d{2}-\d{2})$/;
@@ -49,7 +49,7 @@ export function buildWorkIndex(root: string): { index: WorkIndex; tags: TagCatal
         const versionValue = readJson(versionFile, issues, relative(root, versionFile));
         if (!isRecord(versionValue)) continue;
         const version = versionValue as Version;
-        validateVersion(version, fileName, relative(root, versionFile), issues);
+        validateVersion(version, fileName, relative(root, versionFile), workDir, issues);
         if (versions.has(version.id)) issues.push(`${relative(root, versionFile)}: 版本 ID 重复：${version.id}`);
         const path = toPublicPath(root, versionFile);
         versions.set(version.id, { value: version, summary: { id: version.id, name: version.name, type: version.type, date: version.date, path } });
@@ -125,7 +125,7 @@ function validateWork(work: Work, dirName: string, workDir: string, root: string
   checkDuplicates(work.featuredVersions, `${label}: featuredVersions`, issues);
 }
 
-function validateVersion(version: Version, fileName: string, label: string, issues: string[]): void {
+function validateVersion(version: Version, fileName: string, label: string, workDir: string, issues: string[]): void {
   const expectedId = fileName.slice("version-".length, -".json".length);
   if (version.schemaVersion !== 1) issues.push(`${label}: schemaVersion 必须为 1`);
   if (version.id !== expectedId || !ID_PATTERN.test(version.id)) issues.push(`${label}: id 必须与文件名一致，且只使用小写英文、数字和连字符`);
@@ -135,8 +135,32 @@ function validateVersion(version: Version, fileName: string, label: string, issu
   validateRoleMap(version.people, `${label}: people`, issues);
   if (!Array.isArray(version.links)) issues.push(`${label}: links 必须是数组`);
   else for (const [index, link] of version.links.entries()) validateLink(link, `${label}: links[${index}]`, issues);
+  const audio = (version as Version & { audio?: unknown }).audio;
+  if (audio === undefined) {
+    // 兼容早期没有音频字段的版本文件。
+  } else if (!Array.isArray(audio)) issues.push(`${label}: audio 必须是数组`);
+  else {
+    const qualities = new Set<string>();
+    for (const [index, asset] of audio.entries()) {
+      const item = asset as Partial<AudioAsset>;
+      const hasFile = isNonEmptyString(item.file);
+      const hasUrl = isNonEmptyString(item.url);
+      if (!isNonEmptyString(item.quality) || (!hasFile && !hasUrl) || !["mp3", "flac"].includes(String(item.format))) issues.push(`${label}: audio[${index}] 必须包含 quality、format，以及 file 或 url`);
+      if (isNonEmptyString(item.quality) && qualities.has(item.quality)) issues.push(`${label}: audio 音质不能重复：${item.quality}`);
+      if (isNonEmptyString(item.quality)) qualities.add(item.quality);
+      if (hasFile) validateLocalResource(item.file!, workDir, `${label}: audio[${index}].file`, [".mp3", ".flac"], issues);
+      if (hasFile && (item.format === "mp3" || item.format === "flac") && !item.file!.toLowerCase().endsWith(`.${item.format}`)) issues.push(`${label}: audio[${index}].file 扩展名必须与 format 一致`);
+      if (hasUrl && !/^https:\/\/[^\s]+$/i.test(item.url!)) issues.push(`${label}: audio[${index}].url 必须是 HTTPS URL`);
+      if (item.size !== undefined && (!Number.isInteger(item.size) || item.size <= 0)) issues.push(`${label}: audio[${index}].size 必须是正整数`);
+      if (item.sha256 !== undefined && !/^[a-f0-9]{64}$/i.test(item.sha256)) issues.push(`${label}: audio[${index}].sha256 必须是 64 位十六进制摘要`);
+    }
+  }
+  const rights = (version as Version & { audioRights?: unknown }).audioRights;
+  if (rights !== undefined && rights !== null && rights !== "authorized") issues.push(`${label}: audioRights 只能是 authorized 或 null`);
+  if (Array.isArray(audio) && audio.length && rights !== "authorized") issues.push(`${label}: 收录音频时必须确认拥有分发权`);
   if (typeof version.notes !== "string") issues.push(`${label}: notes 必须是字符串`);
 }
+
 
 function validateVersionOrder(work: Work, order: string[], versions: Map<string, { value: Version; summary: VersionSummary }>, issues: string[]): void {
   const label = `public/content/works/${work.id}/work.json`;

@@ -1,4 +1,13 @@
 {
   "schemaVersion": 1,
-  "groups": []
+  "groups": [
+    {
+      "id": "status",
+      "name": "资料状态",
+      "order": 1,
+      "tags": [
+        { "id": "to-complete", "name": "待补", "order": 1 }
+      ]
+    }
+  ]
 }

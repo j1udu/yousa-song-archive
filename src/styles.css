@@ -1399,6 +1399,99 @@ details[open] > summary .summary__chevron {
   overflow-wrap: anywhere;
 }
 
+.version__download {
+  margin-top: 1rem;
+}
+
+.download-dialog {
+  width: min(30rem, calc(100vw - 2rem));
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 1.5rem 4rem rgb(0 0 0 / 0.24);
+  opacity: 1;
+  transform: scale(1);
+  transition: transform 200ms var(--ease), opacity 160ms ease, overlay 200ms allow-discrete, display 200ms allow-discrete;
+}
+
+.download-dialog[open] {
+  display: grid;
+}
+
+.download-dialog:not([open]) {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+@starting-style {
+  .download-dialog[open] {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+.download-dialog::backdrop {
+  background: rgb(10 20 18 / 0.56);
+  opacity: 1;
+  transition: opacity 160ms ease, overlay 200ms allow-discrete, display 200ms allow-discrete;
+}
+
+@starting-style {
+  .download-dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+.download-dialog__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.15rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.download-dialog__head h2 {
+  margin: 0;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 1.25rem;
+  overflow-wrap: anywhere;
+}
+
+.download-dialog > .muted {
+  padding: 1rem 1.15rem 0;
+}
+
+.download-dialog__list {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0.75rem 1.15rem 1.15rem;
+}
+
+.download-dialog__option {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control, 8px);
+  background: var(--bg);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 140ms var(--ease), border-color var(--duration) ease, background-color var(--duration) ease;
+}
+
+.download-dialog__option small {
+  margin-left: auto;
+  color: var(--coral, var(--accent));
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
 .version__error {
   display: flex;
   gap: 0.75rem;

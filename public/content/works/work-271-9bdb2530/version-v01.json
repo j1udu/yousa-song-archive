@@ -16,5 +16,15 @@
       "label": "网易云条目"
     }
   ],
-  "notes": ""
+  "notes": "",
+  "audio": [
+    {
+      "quality": "MP3 320 kbps",
+      "format": "mp3",
+      "size": 7909920,
+      "sha256": "085b681f2039740e5399931098adbdccac18330105cd870695db3ee96f0ae6c1",
+      "url": "https://github.com/j1udu/yousa-song-archive/releases/download/audio-mp3-v1/work-271-9bdb2530-v01.mp3"
+    }
+  ],
+  "audioRights": "authorized"
 }

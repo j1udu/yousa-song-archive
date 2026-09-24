@@ -16,6 +16,8 @@
     "dev:fixtures": "tsx scripts/generate-content.ts fixtures && PUBLIC_DIR=fixtures/public vite",
     "build:fixtures": "tsx scripts/generate-content.ts fixtures && PUBLIC_DIR=fixtures/public VITE_BASE_PATH=/yousa-song-archive/ vite build --outDir dist-fixtures",
     "preview:fixtures": "PUBLIC_DIR=fixtures/public VITE_BASE_PATH=/yousa-song-archive/ vite preview --outDir dist-fixtures --port 4174 --strictPort",
+    "audio:download": "node scripts/download-netease-audio.mjs",
+    "audio:publish": "node scripts/publish-github-audio.mjs",
     "admin": "tsx scripts/admin-server.ts",
     "test:admin": "node --import tsx --test tests/admin-content.test.ts"
   },

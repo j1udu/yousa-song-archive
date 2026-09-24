@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "v03",
+  "name": "人设404（Chill Mastered Version）",
+  "type": "重制版",
+  "date": null,
+  "people": {
+    "作词": [
+      "天钦",
+      "泠鸢yousa"
+    ],
+    "作曲": [
+      "天钦"
+    ],
+    "编曲": [
+      "天钦"
+    ],
+    "网易云艺人": [
+      "泠鸢yousa"
+    ]
+  },
+  "links": [
+    {
+      "platform": "网易云音乐",
+      "url": "https://music.163.com/#/song?id=2737443409",
+      "label": "网易云条目"
+    }
+  ],
+  "notes": "",
+  "audio": [
+    {
+      "quality": "FLAC 无损",
+      "format": "flac",
+      "size": 27963689,
+      "sha256": "d367455bed934857fdc15dd31efa0314336513dbfab59439e308ecf07622cf64",
+      "url": "https://github.com/j1udu/yousa-song-archive/releases/download/audio-flac-v1/work-043-72dc621c-v03.flac"
+    },
+    {
+      "quality": "MP3 320 kbps",
+      "format": "mp3",
+      "size": 7967085,
+      "sha256": "ccfcd6f953a7873076af7e0f8e4e6836ca0a7799cd6c27de1d7aff0649a97651",
+      "url": "https://github.com/j1udu/yousa-song-archive/releases/download/audio-mp3-v1/work-043-72dc621c-v03.mp3"
+    }
+  ],
+  "audioRights": "authorized"
+}

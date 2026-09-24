@@ -16,5 +16,22 @@
       "label": "网易云条目"
     }
   ],
-  "notes": ""
+  "notes": "",
+  "audio": [
+    {
+      "quality": "FLAC 无损",
+      "format": "flac",
+      "size": 30872187,
+      "sha256": "b5b2813d3267cf583e327915e2dc96f0f51a14c424e1937eb7fde30adacf2118",
+      "url": "https://github.com/j1udu/yousa-song-archive/releases/download/audio-flac-v1/work-227-9556d003-v03.flac"
+    },
+    {
+      "quality": "MP3 320 kbps",
+      "format": "mp3",
+      "size": 11393611,
+      "sha256": "c645173a9e9ab3a8bccc6174dc8e5c9950be3de3c677646c57502fc7df4bd9b9",
+      "url": "https://github.com/j1udu/yousa-song-archive/releases/download/audio-mp3-v1/work-227-9556d003-v03.mp3"
+    }
+  ],
+  "audioRights": "authorized"
 }

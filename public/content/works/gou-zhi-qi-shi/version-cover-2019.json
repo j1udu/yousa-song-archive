@@ -34,5 +34,15 @@
       "label": "网易云音乐音源"
     }
   ],
-  "notes": "网易云专辑《【泠鸢翻唱2019】》；原作信息显示作词作曲为 ilem。"
+  "notes": "网易云专辑《【泠鸢翻唱2019】》；原作信息显示作词作曲为 ilem。",
+  "audio": [
+    {
+      "quality": "MP3 320 kbps",
+      "format": "mp3",
+      "size": 7343587,
+      "sha256": "4d53d84d2bf1ea6745f06f3868bfd7ee711dd59418d0970764ebe3cf079acd38",
+      "url": "https://github.com/j1udu/yousa-song-archive/releases/download/audio-mp3-v1/gou-zhi-qi-shi-cover-2019.mp3"
+    }
+  ],
+  "audioRights": "authorized"
 }

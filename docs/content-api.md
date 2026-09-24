@@ -12,6 +12,7 @@
 | `GET` | `/content/works/{work-id}/version-{version-id}.json` | 单个版本的完整资料 |
 | `GET` | `/content/works/{work-id}/{lyrics-file}` | 作品层完整歌词（可选资源，文件名由 `work.json` 指定） |
 | `GET` | `/content/works/{work-id}/{cover-file}` | 作品封面（可选资源） |
+| `GET` | `/content/works/{work-id}/{audio-file}` | 版本授权音频（下载资源） |
 
 接口是公开、只读、无认证的静态文件。未知路径由 GitHub Pages 返回 `404`；构建阶段会先检查仓库内的路径和字段。
 
@@ -105,6 +106,11 @@
       "label": "正式音源"
     }
   ],
+  "audio": [
+    { "quality": "FLAC 无损", "url": "https://github.com/example/archive/releases/download/audio-flac-v1/example-v01.flac", "format": "flac" },
+    { "quality": "MP3 320k", "file": "audio-official-320.mp3", "format": "mp3" }
+  ],
+  "audioRights": "authorized",
   "notes": "版本备注。"
 }
 ```
@@ -115,6 +121,9 @@
 - `date` 使用 `YYYY-MM-DD` 或 `YYYY`；未知时为 `null`。
 - `people` 只写相对作品默认人员发生变化的角色；省略角色表示继承，空数组表示明确清除该角色。
 - `links` 可以为空。为空时版本仍展示，但前端完全隐藏链接区域。
+- `audio` 是可选的音频下载条目数组；每项包含音质名称、`mp3`/`flac` 格式，以及作品目录内 `file` 或 HTTPS `url`。远程音频可附带 `size` 和 `sha256` 用于核验。旧版本缺少该字段时按空数组处理。
+- `audioRights` 收录音频时必须为 `authorized`，否则内容校验失败；详情页只为已授权音频显示“下载”按钮。
+- GitHub Release 音频的上传与更新步骤见 [授权音频发布](./audio-releases.md)。
 - 每条链接必须有 `platform`、`url`、`label`，URL 只接受 `http` 或 `https`。
 
 ## 构建索引

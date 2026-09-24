@@ -524,44 +524,44 @@
       "file": "public/content/works/work-043-72dc621c/version-v01.json"
     },
     {
-      "workId": "work-044-643a26f3",
-      "versionId": "v01",
+      "workId": "work-043-72dc621c",
+      "versionId": "v02",
       "songId": "2737443290",
       "reviewRow": 131,
       "reviewTitle": "人设404 （Hyped Mastered Version）",
       "reviewAlbum": "人设404",
       "reviewAlbumId": "281971075",
-      "file": "public/content/works/work-044-643a26f3/version-v01.json"
+      "file": "public/content/works/work-043-72dc621c/version-v02.json"
     },
     {
-      "workId": "work-045-e6376859",
-      "versionId": "v01",
+      "workId": "work-043-72dc621c",
+      "versionId": "v03",
       "songId": "2737443409",
       "reviewRow": 340,
       "reviewTitle": "人设404（Chill Mastered Version）",
       "reviewAlbum": "人设404",
       "reviewAlbumId": "281971075",
-      "file": "public/content/works/work-045-e6376859/version-v01.json"
+      "file": "public/content/works/work-043-72dc621c/version-v03.json"
     },
     {
-      "workId": "work-046-9dffa93f",
-      "versionId": "v01",
+      "workId": "work-043-72dc621c",
+      "versionId": "v04",
       "songId": "2737441883",
       "reviewRow": 376,
       "reviewTitle": "人设404（Instrumental）",
       "reviewAlbum": "人设404",
       "reviewAlbumId": "281971075",
-      "file": "public/content/works/work-046-9dffa93f/version-v01.json"
+      "file": "public/content/works/work-043-72dc621c/version-v04.json"
     },
     {
-      "workId": "work-047-b4c9c9f2",
-      "versionId": "v01",
+      "workId": "work-043-72dc621c",
+      "versionId": "v05",
       "songId": "2737442053",
       "reviewRow": 375,
       "reviewTitle": "人设404（MMO）",
       "reviewAlbum": "人设404",
       "reviewAlbumId": "281971075",
-      "file": "public/content/works/work-047-b4c9c9f2/version-v01.json"
+      "file": "public/content/works/work-043-72dc621c/version-v05.json"
     },
     {
       "workId": "work-048-88b6b77e",

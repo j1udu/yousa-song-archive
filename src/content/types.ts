@@ -24,6 +24,17 @@ export interface Link {
   label: string;
 }
 
+export interface AudioAsset {
+  quality: string;
+  /** 站内音频文件。与 url 至少提供一个。 */
+  file?: string;
+  /** GitHub Release 等远程下载地址。与 file 至少提供一个。 */
+  url?: string;
+  format: "mp3" | "flac";
+  size?: number;
+  sha256?: string;
+}
+
 export interface Work {
   schemaVersion: 1;
   id: string;
@@ -47,6 +58,8 @@ export interface Version {
   date: string | null;
   people: RoleMap;
   links: Link[];
+  audio?: AudioAsset[];
+  audioRights?: "authorized" | null;
   notes: string;
 }
 

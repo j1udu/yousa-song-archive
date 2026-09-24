@@ -6,6 +6,7 @@ import { icon } from "../ui/icons";
 import { coverMarkup, loadingBlock, peopleList, siteFooter, siteHeader, SITE_NAME, statusBlock, tagChips, yearBadge } from "../ui/common";
 import { buildTagLookup, type TagLookup } from "../catalog/query";
 import { homeHref } from "../router";
+import { contentUrl } from "../content/api";
 
 export interface WorkViewContext {
   /** 用户已经离开本页时返回 false，避免过期渲染。 */
@@ -94,6 +95,7 @@ function renderWork(
           ${work.versionOrder.length
             ? html`<ol class="versions" role="list" data-versions>${work.versionOrder.map((id, index) => versionItem(work, id, index, versionResults.get(id) ?? { status: "error", error: new Error("版本缺失") }, summaries.get(id)))}</ol>`
             : html`<p class="muted">暂无版本资料</p>`}
+          <dialog class="download-dialog" data-download-dialog aria-labelledby="download-dialog-title"></dialog>
         </section>
         <section class="work__section" aria-labelledby="lyrics-heading">
           <h2 class="section-title" id="lyrics-heading">${icon("file-text", { size: 18 })}完整歌词</h2>
@@ -110,11 +112,19 @@ function renderWork(
   );
 
   const main = $<HTMLElement>(root, "main");
+  const downloadDialog = $<HTMLDialogElement>(main, "[data-download-dialog]");
+  downloadDialog.addEventListener("click", (event) => {
+    if (event.target === downloadDialog) downloadDialog.close();
+  });
   focusHeading(root);
   main.addEventListener("click", async (event) => {
     const target = (event.target as Element | null)?.closest<HTMLElement>("[data-action]");
     if (!target) return;
     const action = target.dataset.action;
+    if (action === "close-download") {
+      target.closest<HTMLDialogElement>("dialog")?.close();
+      return;
+    }
     if (action === "expand-all" || action === "collapse-all") {
       for (const panel of main.querySelectorAll<HTMLDetailsElement>("details[data-version]")) panel.open = action === "expand-all";
       return;
@@ -127,10 +137,14 @@ function renderWork(
       try {
         const version = await getVersion(workId, id);
         if (!context.alive()) return;
-        replaceVersionItem(item, work, id, { status: "ok", version }, summaries.get(id));
+        const result: VersionResult = { status: "ok", version };
+        versionResults.set(id, result);
+        replaceVersionItem(item, work, id, result, summaries.get(id));
       } catch (error) {
         if (!context.alive()) return;
-        replaceVersionItem(item, work, id, { status: "error", error }, summaries.get(id));
+        const result: VersionResult = { status: "error", error };
+        versionResults.set(id, result);
+        replaceVersionItem(item, work, id, result, summaries.get(id));
       }
       return;
     }
@@ -140,6 +154,10 @@ function renderWork(
         details.dataset.state = "idle";
         void loadLyricsInto(details, lyricsUrl, context);
       }
+    }
+    if (action === "open-download" && target.dataset.version) {
+      const result = versionResults.get(target.dataset.version);
+      if (result?.status === "ok") openDownloadDialog(main, workId, result.version);
     }
   });
 
@@ -212,9 +230,22 @@ function versionInner(work: Work, id: string, index: number, result: VersionResu
             (link) => html`<li><a class="links__item" href="${link.url}" target="_blank" rel="noopener noreferrer"><span class="links__platform">${link.platform}</span><span class="links__label">${link.label}</span>${icon("external-link", { className: "links__icon" })}<span class="visually-hidden">（新标签页打开）</span></a></li>`,
           )}</ul>`
         : ""}
+      ${version.audio?.length && version.audioRights === "authorized"
+        ? html`<div class="version__download"><button type="button" class="button button--small" data-action="open-download" data-version="${version.id}">${icon("download")}<span>下载</span></button></div>`
+        : ""}
       ${version.notes.trim() ? html`<h3 class="version__subtitle">备注</h3><p class="version__notes">${version.notes}</p>` : ""}
     </div>
   </details>`;
+}
+
+function openDownloadDialog(main: HTMLElement, workId: string, version: Version): void {
+  const dialog = $<HTMLDialogElement>(main, "[data-download-dialog]");
+  const audio = version.audio ?? [];
+  setHtml(dialog, html`<div class="download-dialog__head"><h2 id="download-dialog-title">下载 ${version.name}</h2><button type="button" class="icon-button" data-action="close-download" aria-label="关闭">${icon("x")}</button></div><p class="muted">请选择要下载的音质</p><ul class="download-dialog__list" role="list">${audio.map((asset) => {
+    const href = asset.url ?? contentUrl(`content/works/${workId}/${asset.file}`);
+    return html`<li><a class="download-dialog__option" href="${href}" download rel="noopener noreferrer">${icon("download")}<span>${asset.quality}</span><small>${asset.format.toUpperCase()}</small></a></li>`;
+  })}</ul></dialog>`);
+  dialog.showModal();
 }
 
 /** 日期原样展示：只有年份时不补造月日。 */

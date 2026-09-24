@@ -2,11 +2,11 @@
   "source": "outputs/song-review/网易云歌曲审查清单.xlsx",
   "sourceSha256": "737e370230a4cd2ba180018fec181dc9b3be4e3f932b5b24362602ae53404896",
   "summary": {
-    "works": 276,
-    "ready": 272,
-    "missing": 4,
+    "works": 272,
+    "ready": 270,
+    "missing": 2,
     "errors": 0,
-    "changedWorks": 1
+    "changedWorks": 0
   },
   "records": [
     {
@@ -655,7 +655,7 @@
     },
     {
       "workId": "work-043-72dc621c",
-      "title": "人设404 洛天依ver",
+      "title": "人设404",
       "selectedSongId": "2737441854",
       "selectedVersionId": "v01",
       "status": "ready",
@@ -665,64 +665,6 @@
           "songId": "2737441854",
           "versionId": "v01",
           "status": "selected"
-        }
-      ]
-    },
-    {
-      "workId": "work-044-643a26f3",
-      "title": "人设404 （Hyped Mastered Version）",
-      "selectedSongId": "2737443290",
-      "selectedVersionId": "v01",
-      "status": "ready",
-      "lineCount": 66,
-      "attempts": [
-        {
-          "songId": "2737443290",
-          "versionId": "v01",
-          "status": "selected"
-        }
-      ]
-    },
-    {
-      "workId": "work-045-e6376859",
-      "title": "人设404（Chill Mastered Version）",
-      "selectedSongId": "2737443409",
-      "selectedVersionId": "v01",
-      "status": "ready",
-      "lineCount": 66,
-      "attempts": [
-        {
-          "songId": "2737443409",
-          "versionId": "v01",
-          "status": "selected"
-        }
-      ]
-    },
-    {
-      "workId": "work-046-9dffa93f",
-      "title": "人设404（Instrumental）",
-      "selectedSongId": null,
-      "selectedVersionId": null,
-      "status": "missing",
-      "attempts": [
-        {
-          "songId": "2737441883",
-          "versionId": "v01",
-          "status": "empty"
-        }
-      ]
-    },
-    {
-      "workId": "work-047-b4c9c9f2",
-      "title": "人设404（MMO）",
-      "selectedSongId": null,
-      "selectedVersionId": null,
-      "status": "missing",
-      "attempts": [
-        {
-          "songId": "2737442053",
-          "versionId": "v01",
-          "status": "empty"
         }
       ]
     },
